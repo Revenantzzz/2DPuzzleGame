@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2cbcdfdcb41c424eb91ad2cd9ac4f6c, type: 3}
+  m_Name: Sound SO
+  m_EditorClassIdentifier: 
+  moveClips:
+  - {fileID: 8300000, guid: e779dffcce7c2574a8a4ebd3edd7501c, type: 3}
+  pickClips:
+  - {fileID: 8300000, guid: c1049cbae204fe34da335eb057280ef5, type: 3}
+  cutClips:
+  - {fileID: 8300000, guid: a2557cb5e2ac68a4b9898f19f0389218, type: 3}

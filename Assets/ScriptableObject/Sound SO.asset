@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e779dffcce7c2574a8a4ebd3edd7501c, type: 3}
   pickClips:
   - {fileID: 8300000, guid: c1049cbae204fe34da335eb057280ef5, type: 3}
-  cutClips:
+  InteractClips:
   - {fileID: 8300000, guid: a2557cb5e2ac68a4b9898f19f0389218, type: 3}

@@ -588,4 +588,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextHasAxe: {fileID: 3996976259367993723}
   TextNotHasAxe: {fileID: 3799529689959189746}
-  PlayerIcon: {fileID: 6150298990485429628}
+  interactButton: {fileID: 2205312574965656857, guid: 45aa7fe03f8581d4081230cb8a222b8d, type: 3}

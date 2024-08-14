@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,31 +16,28 @@ public class PlayerController : MonoBehaviour
     RaycastHit2D hitCanPushObj;
     RaycastHit2D hitCanInteractObj;
     CanInteractObj canInteractObj;
-    public bool HasAxe { get; set; }
+    public List<IPickableObject> PickedObjectList { get; private set; }
 
-    public event UnityAction<CanInteractObj> OnObjectInteract;
     public event UnityAction OnCutting;
-    public event UnityAction OnMoving;
-    public event UnityAction OnPicking;
+    public event UnityAction<Vector2> OnMoving;
+    public event UnityAction<Vector2> OnChangeDiretion;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();  
         Instance = this;
-        HasAxe = false;
+        PickedObjectList = new List<IPickableObject>();
     }
     private void Start()
     {
+        PickedObjectList.Clear();
         playerInput.OnPlayerMove += HandleMovement;
         playerInput.OnActionUndo += HandleUndo;
         playerInput.OnPlayerInteract += HandleInteract;
     }
-    private void Update()
-    {
-        //CheckFinalTree();
-    }
     public void HandleMovement(Vector2 movement)
     {
+        OnChangeDiretion?.Invoke(movement);
         RunPlayerCommand(movement);
     }
     public void HandleUndo()
@@ -56,7 +54,6 @@ public class PlayerController : MonoBehaviour
                 OnCutting?.Invoke();
                 return;
             }
-            OnPicking?.Invoke();
         }
     }
     public void Move(Vector2 direction, CanPushObj pushedObj)
@@ -68,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
         }
-        OnMoving?.Invoke();
+        OnMoving?.Invoke(direction);
         this.transform.position += ((Vector3)direction);
     }
 
@@ -112,17 +109,8 @@ public class PlayerController : MonoBehaviour
             CommandInvoker.ExcuteCommand(command);
         }
     }
-    private void CheckFinalTree()
+    public void AddPickableObject(IPickableObject pickableObject)
     {
-        if(HasAxe)
-        {
-            hitCanInteractObj = Physics2D.Raycast(transform.position, Vector2.right, interactDistance, obstacleLayer);
-            if (hitCanInteractObj)
-            {
-                hitCanInteractObj.transform.TryGetComponent<FinalTree>(out FinalTree tree);
-                canInteractObj = tree as CanInteractObj;
-                OnObjectInteract?.Invoke(tree);
-            }
-        }
+        this.PickedObjectList.Add(pickableObject);
     }
 }

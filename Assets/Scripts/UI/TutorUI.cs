@@ -8,8 +8,9 @@ public class TutorUI : MonoBehaviour
 {
     [SerializeField] GameObject TextHasAxe;
     [SerializeField] GameObject TextNotHasAxe;
-    [SerializeField] GameObject PlayerIcon;
+    [SerializeField] InteractButton interactButton;
 
+    List<IPickableObject> PickableObjects => PlayerController.Instance.PickedObjectList;
     private void Start()
     {
         Initialize();
@@ -25,11 +26,15 @@ public class TutorUI : MonoBehaviour
     }
     private void ChangeWhenHasAxe()
     {
-        if(!PlayerController.Instance.HasAxe)
+        
+        foreach(IPickableObject obj in PickableObjects)
         {
-            return;
-        }
-        TextNotHasAxe.SetActive(false);
-        TextHasAxe.SetActive(true);
+            if(obj is PickableAxe)
+            {
+                interactButton.EnableImage();
+                TextNotHasAxe.SetActive(false);
+                TextHasAxe.SetActive(true);
+            }
+        }      
     }
 }

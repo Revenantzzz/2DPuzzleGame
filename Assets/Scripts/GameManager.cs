@@ -20,9 +20,8 @@ public class GameManager : MonoBehaviour
     }
     public void LevelComplete()
     {
-        if(currentLevelIndex < maxLevelNum - 1)
-        {
-            
+        if (currentLevelIndex < maxLevelNum - 1)
+        {            
             SceneController.Instance.LoadLevel(currentLevelIndex + 1);
             return;
         }

@@ -13,17 +13,13 @@ public class InteractButton : MonoBehaviour
         axeImage.gameObject.SetActive(false);
         pickText.gameObject.SetActive(true);
     }
-    private void Update()
-    {
-        EnableImage();
-    }
-    private void EnableImage()
+    public void EnableImage()
     {
         if(axeImage == null)
         {
             return;
         }
-        if(!axeImage.gameObject.activeSelf && PlayerController.Instance.HasAxe)
+        if(!axeImage.gameObject.activeSelf)
         {
             axeImage.gameObject.SetActive(true);
             pickText.gameObject.SetActive(false);

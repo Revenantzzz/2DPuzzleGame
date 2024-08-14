@@ -11,6 +11,6 @@ public class SoundSO : ScriptableObject
     [Header("Pick Sounds")]
     public List<AudioClip> pickClips;
 
-    [Header("Cut Sounds")]
-    public List <AudioClip> cutClips;
+    [Header("Interact Sounds")]
+    public List<AudioClip> InteractClips;
 }

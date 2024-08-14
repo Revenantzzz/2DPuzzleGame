@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundSO: {fileID: 11400000, guid: 9b165c3d9ff4f914b8733345cb963c30, type: 2}
+  canInteractObjectList:
+  - {fileID: 7169134364670549547, guid: d8abc43fcd910d344afc953a22fc394c, type: 3}
+  - {fileID: 2220566819881168792, guid: 46d7d1898846643428cdbfc4541e8112, type: 3}
 --- !u!82 &2132094358225480525
 AudioSource:
   m_ObjectHideFlags: 0
